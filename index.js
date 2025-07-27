@@ -1,12 +1,14 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const {sendBulkEmails} = require('./controller/BulkMailController')
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4242
 
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 app.post('/api/send_bulk_mail', sendBulkEmails)
 
